@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -28,7 +29,10 @@ public class SpinnerListAdapterActivity extends Activity {
         mSpBaraholka.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 Toast.makeText(SpinnerListAdapterActivity.this, "spinner baraholka, position = " + position + " id = " + id, Toast.LENGTH_SHORT).show();
+
+                switchItemsOfSpinner(position);
             }
 
             @Override
@@ -60,8 +64,17 @@ public class SpinnerListAdapterActivity extends Activity {
             }
         });
 
+
+        String[] arr = getResources().getStringArray(R.array.technics);
+
 //        ListView mLvFurniture;  //list_furniture
         mLvFurniture = (ListView)findViewById(R.id.lv_furniture);
+
+
+        ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, arr);
+
+        mLvFurniture.setAdapter(listAdapter);
+
         mLvFurniture.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -70,6 +83,16 @@ public class SpinnerListAdapterActivity extends Activity {
         });
 
 
-
     }
+
+    public void switchItemsOfSpinner(int position){
+        ArrayAdapter<String> listAdapter;
+        if (position == 0){
+            listAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, new String[]{"1","2","3"});
+        } else {
+            listAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, new String[]{"a","b","c"});
+        }
+        mLvFurniture.setAdapter(listAdapter);
+    }
+
 }

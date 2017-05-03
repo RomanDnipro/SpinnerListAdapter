@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">SpinnerListAdapter</string>
+    <array name="furniture">
+        <item>desk</item>
+        <item>cher</item>
+        <item>table</item>
+    </array>
+    <array name="technics">
+        <item>desktop</item>
+        <item>tv</item>
+        <item>laptop</item>
+    </array>
+    <array name="baraholka">
+        <item>furniture</item>
+        <item>technics</item>
+    </array>
+</resources>
